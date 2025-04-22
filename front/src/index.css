@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+@import "tailwindcss";
+
+body {
+    background-color: #F6F6F6;
+    font-family: var(sans-serif); 
+}
+
+@theme {
+    --font-theme: 'Itim', cursive; 
+    --color-background: #F6F6F6;
+    --color-primary: #546DD8;
+    --color-primary2: #5064BC;
+    --color-neutral: #ABABAB;
+    --color-neutral2: #576061;
+    --color-text: #FFFFFF;
+    --color-text2: #232324;
+}
