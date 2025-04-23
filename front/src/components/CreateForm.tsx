@@ -17,16 +17,15 @@ const CreateForm = () => {
     register,
     handleSubmit,
     control,
-    watch,
     setError,
-    clearErrors,
     formState: { errors },
   } = useForm<Inputs>({
     defaultValues: {
       options: [{ value: "" }, { value: "" }, { value: "" }],
     },
   });
-  const { fields, append, update, remove } = useFieldArray({
+
+  const { fields, append, remove } = useFieldArray({
     control,
     name: "options",
   });
@@ -52,7 +51,7 @@ const CreateForm = () => {
       });
       alert("Enquete criada com sucesso!");
     } catch (error) {
-      alert(`Erro ao salvar enquete: ${error}`, );
+      alert(`Erro ao salvar enquete: ${error}`);
     }
   };
 
@@ -61,11 +60,8 @@ const CreateForm = () => {
   };
 
   const deleteOption = (index: number) => {
-    console.log(index)
-    remove(index)    
-    console.log("Campos depois da remoção:", fields);
-
-  }
+    remove(index);
+  };
 
   return (
     <div className="bg-white w-[90%] h-[70%] p-8">
@@ -86,35 +82,40 @@ const CreateForm = () => {
           <label className="text-base font-semibold text-text2">
             Opções de resposta
           </label>
-            <div className="flex flex-col gap-2 mt-1">
+          <div className="flex flex-col gap-2 mt-1">
             {fields.map((field, index) => (
               <div key={field.id} className="flex items-center gap-2">
-              {index === 0 && errors.options && (
-                <p className="text-sm text-red-500 mt-2">
-                {errors.options.message}
-                </p>
-              )}
-              <input
-                {...register(`options.${index}.value`, {
-                required:
-                  index === 0 ? "A primeira opção é obrigatória." : false,
-                })}
-                placeholder={`Opção ${index + 1}`}
-                className="border border-gray-300 rounded-md p-2 w-full outline-primary2"
-              />
-              {index !== 0 ? <Delete className="h-4 cursor-pointer w-4" onClick={() => deleteOption(Number(field.id))} /> : null}
+                {index !== 0 && errors.options && (
+                  <p className="text-sm text-red-500 mt-2">
+                    {errors.options.message}
+                  </p>
+                )}
+                <input
+                  {...register(`options.${index}.value`, {
+                    required:
+                      index === 0 ? "A primeira opção é obrigatória." : false,
+                  })}
+                  placeholder={`Opção ${index + 1}`}
+                  className="border border-gray-300 rounded-md p-2 w-full outline-primary2"
+                />
+                {index !== 0 ? (
+                  <Delete
+                    className="h-4 cursor-pointer w-4"
+                    onClick={() => deleteOption(index)}
+                  />
+                ) : null}
               </div>
             ))}
-            </div>
+          </div>
 
-            <button
+          <button
             type="button"
             onClick={addOption}
             className="bg-primary text-white text-sm px-4 py-2 rounded-md flex items-center gap-2 mt-2 hover:bg-primary2 hover:scale-105 active:bg-primary2 transition-transform duration-200"
-            >
+          >
             <PlusCircle className="w-4 h-4" />
             Adicionar opção
-            </button>
+          </button>
         </div>
 
         <div>
