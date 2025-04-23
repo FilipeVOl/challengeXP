@@ -10,6 +10,7 @@ const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<DefaultLayout />}>
+            <Route index element={<Enquetes />} />
             </Route>
 
             <Route path="/criar" element={<DefaultLayout />}>
