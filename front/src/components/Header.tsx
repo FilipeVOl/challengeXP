@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { act, useState } from "react";
+import { useNavigate } from "react-router"
 
-const Header = () => {
-    const [activeTab, setActiveTab] = useState<string | null>(null);
+const Header = ({ activeTab, handleTabClick }: {activeTab: string | null, handleTabClick: (tab: string) => void}) => {
+    const navigate = useNavigate();
 
-    const handleTabClick = (tab: string) => {
-        setActiveTab(tab);
-    };
 
     return (
         <div className="bg-white flex gap-4 md:gap-0 justify-between items-end px-8 py-4 pb-0 border-b border-neutral-200 shadow-lg ">
@@ -18,7 +16,7 @@ const Header = () => {
                             ? "border-primary border-b-4" 
                             : "border-transparent hover:border-primary"
                     } transition-all duration-300 cursor-pointer`}
-                    onClick={() => handleTabClick("createPoll")}
+                    onClick={() => { handleTabClick("createPoll"); navigate("/criar")}}
                 >
                     Criar enquete
                 </h2>
@@ -28,9 +26,9 @@ const Header = () => {
                             ? "border-primary border-b-4"
                             : "border-transparent hover:border-primary"
                     } transition-all duration-300 cursor-pointer`}
-                    onClick={() => handleTabClick("polls")}
+                    onClick={() => { handleTabClick("polls"); navigate("/enquetes")}}
                 >
-                    Pesquisas
+                    Enquetes
                 </h2>
             </div>
         </div>

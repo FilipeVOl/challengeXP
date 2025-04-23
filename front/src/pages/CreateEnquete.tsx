@@ -1,14 +1,16 @@
 import React from 'react';
 import CreateForm from '../components/CreateForm';
+import { Title } from '../stories/Title';
+import { Subtitle } from '../stories/Subtitle'
 
 const CreateEnquete = () => {
   return (
     <div className="flex flex-col items-center justify-center  bg-gray-100">
       <div className="flex flex-col items-center gap-4 py-10">
-        <h1 className="text-text2 text-5xl font-bold">Criar enquete</h1>
-        <p className="text-text2 text-center">
-          Preencha os seguintes campos para criar a sua enquete
-        </p>
+        <div className='flex flex-col justify-center items-center text-center'>
+        <Title font='sans-serif' label='Criar enquete' />
+        <Subtitle label="Preencha os seguintes campos para criar a sua enquete" />
+        </div>
       </div>
       <CreateForm />
     </div>
