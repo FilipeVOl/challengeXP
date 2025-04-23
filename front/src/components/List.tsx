@@ -48,9 +48,7 @@ const List = () => {
             <div className="bg-white shadow-lg rounded-md p-8">
             <Title size="small" label={enquete.title} />
             <div className="flex">
-  <Subtitle label={formatDate(enquete.startDate)} /> 
-  <span className="mx-2">até</span> {/* Adicionando espaçamento aqui */}
-  <Subtitle label={formatDate(enquete.endDate)} />
+  <Subtitle label={formatDate(enquete.startDate)} /><span className="mx-2">até</span><Subtitle label={formatDate(enquete.endDate)} />
 </div>
             </div>
           </li> 
