@@ -50,10 +50,9 @@ const CreateForm = () => {
         endDate: Timestamp.fromDate(new Date(data.endDate)),
         createdAt: Timestamp.now(),
       });
-
-      console.log("Enquete criada com sucesso!");
+      alert("Enquete criada com sucesso!");
     } catch (error) {
-      console.error("Erro ao salvar enquete:", error);
+      alert(`Erro ao salvar enquete: ${error}`, );
     }
   };
 
@@ -152,7 +151,7 @@ const CreateForm = () => {
 
         <button
           type="submit"
-          className="bg-primary text-white w-full py-2 rounded-md mt-4 font-medium"
+          className="bg-primary text-white w-full py-2 rounded-md mt-4 font-medium hover:scale-105 hover:bg-primary2 hover:cursor-pointer"
         >
           Criar enquete
         </button>
