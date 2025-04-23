@@ -26,7 +26,7 @@ const CreateForm = () => {
       options: [{ value: "" }, { value: "" }, { value: "" }],
     },
   });
-  const { fields, append, update } = useFieldArray({
+  const { fields, append, update, remove } = useFieldArray({
     control,
     name: "options",
   });
@@ -61,7 +61,13 @@ const CreateForm = () => {
     append({ value: "" });
   };
 
-  console.log("Form data:", watch());
+  const deleteOption = (index: number) => {
+    console.log(index)
+    remove(index)    
+    console.log("Campos depois da remoção:", fields);
+
+  }
+
   return (
     <div className="bg-white w-[90%] h-[70%] p-8">
       <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
@@ -97,7 +103,7 @@ const CreateForm = () => {
                 placeholder={`Opção ${index + 1}`}
                 className="border border-gray-300 rounded-md p-2 w-full outline-primary2"
               />
-              {index !== 0 ? <Delete className="h-4 cursor-pointer w-4" /> : null}
+              {index !== 0 ? <Delete className="h-4 cursor-pointer w-4" onClick={() => deleteOption(Number(field.id))} /> : null}
               </div>
             ))}
             </div>

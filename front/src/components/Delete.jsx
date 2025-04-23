@@ -1,5 +1,5 @@
 import DeleteIcon from '../assets/Delete.svg?react';
 
-export default function Delete({ className }) {
-  return <DeleteIcon className={className} />;
+export default function Delete({ className, onClick }) {
+  return <DeleteIcon className={className} onClick={onClick} />;
 }
